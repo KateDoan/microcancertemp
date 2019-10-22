@@ -76,7 +76,7 @@ public:
             if(it % 100 == 0)
                 Rcout << "Generate " << it << " initial points\n";
             if(it % 1000 == 0)
-                write_csv_vpoints(ret, "initparamstwo"+std::to_string(it)+".csv", size_theta, target.size());
+                write_csv_vpoints(ret, "initparamsone"+std::to_string(it)+".csv", size_theta, target.size());
         }
 
         running_Nt += N0;
