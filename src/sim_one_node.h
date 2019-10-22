@@ -53,10 +53,12 @@ public:
         for(unsigned i=1; i<years.size()-1; i++){
             num_vec[i+2*years.size()-5] = ((double)map_cancer_death[years[i]]/(double)map_other_death[years[i]] - 0.310616)/0.1078237;
         }
+        /*
         for(auto elem : num_vec){
             Rcout << elem << " ";
         }
         Rcout << "\n";
+        */
 
         return num_vec;
     }

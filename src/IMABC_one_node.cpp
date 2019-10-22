@@ -72,6 +72,11 @@ public:
             min_p = *(std::min_element(pval_vec.begin(), pval_vec.end()));
             dist2_to_target = squared_dist_vec(curr_sim_res, target);
             ret.push_back(Point(params, min_p, dist2_to_target, pval_vec));
+
+            if(it % 100 == 0)
+                Rcout << "Generate " << it << " initial points\n";
+            if(it % 1000 == 0)
+                write_csv_vpoints(ret, "initparamstwo"+std::to_string(it)+".csv", size_theta, target.size());
         }
 
         running_Nt += N0;
@@ -304,7 +309,7 @@ void create_IMABC_one_node(unsigned N0, unsigned Nc, unsigned Ngoal, unsigned B,
                            N0, Nc, Ngoal, B, LIM1, LIM2, LIM3);
     my_imabc.IMABC_main();
     Rcout << "ESS = " << my_imabc.ESS << "\n";
-    print_point_vec(my_imabc.ret);
+    //print_point_vec(my_imabc.ret);
     write_csv_vpoints(my_imabc.ret, "finalparamsonenode.csv", size_theta, target.size());
 }
 
